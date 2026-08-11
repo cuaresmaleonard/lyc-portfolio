@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Footer = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const recaptchaRef = useRef();
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -12,18 +15,25 @@ const Footer = () => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
+    if (!recaptchaToken) {
+      alert("Please complete the CAPTCHA first.");
+      return;
+    }
+    
     setStatus('loading');
     
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, recaptchaToken })
       });
       
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
+        setRecaptchaToken(null);
+        if (recaptchaRef.current) recaptchaRef.current.reset();
         // Reset success message after 3 seconds
         setTimeout(() => setStatus('idle'), 3000);
       } else {
@@ -124,6 +134,14 @@ const Footer = () => {
                   rows="3"
                   className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-professional-500 transition-colors resize-none"
                 ></textarea>
+              </div>
+              <div className="flex justify-center my-4 overflow-hidden rounded-lg">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || ""}
+                  onChange={setRecaptchaToken}
+                  theme="dark"
+                />
               </div>
               <button 
                 type="submit"

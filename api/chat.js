@@ -1,4 +1,11 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { LRUCache } from 'lru-cache';
+
+// Basic in-memory rate limiter for chat (resets when the serverless function cold starts)
+const rateLimit = new LRUCache({
+  max: 500,
+  ttl: 1000 * 60 * 60, // 1 hour
+});
 
 // Initialize the SDK. We do this inside the handler or outside if the env var is available globally.
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
@@ -31,6 +38,21 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
+
+  // 1. Referer / Origin Checking
+  const referer = req.headers.referer || req.headers.origin || '';
+  const host = req.headers.host || '';
+  if (!referer.includes(host) && !referer.includes('localhost')) {
+    return res.status(403).json({ error: 'Forbidden: Invalid referer' });
+  }
+
+  // 2. Rate Limiting (Max 20 messages per hour per IP)
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+  const tokenCount = (rateLimit.get(ip) || 0) + 1;
+  if (tokenCount > 20) {
+    return res.status(429).json({ error: 'Chat limit reached. Please try again later.' });
+  }
+  rateLimit.set(ip, tokenCount);
 
   try {
     const { message, history } = req.body;

@@ -1,16 +1,54 @@
 import nodemailer from 'nodemailer';
+import { LRUCache } from 'lru-cache';
+
+// Basic in-memory rate limiter (resets when the serverless function cold starts)
+const rateLimit = new LRUCache({
+  max: 500,
+  ttl: 1000 * 60 * 60, // 1 hour
+});
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { name, email, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  // 1. Referer / Origin Checking
+  const referer = req.headers.referer || req.headers.origin || '';
+  const host = req.headers.host || '';
+  if (!referer.includes(host) && !referer.includes('localhost')) {
+    return res.status(403).json({ error: 'Forbidden: Invalid referer' });
   }
 
+  // 2. Rate Limiting (Max 3 emails per hour per IP)
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+  const tokenCount = (rateLimit.get(ip) || 0) + 1;
+  if (tokenCount > 3) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+  }
+  rateLimit.set(ip, tokenCount);
+
+  const { name, email, message, recaptchaToken } = req.body;
+
+  if (!name || !email || !message || !recaptchaToken) {
+    return res.status(400).json({ error: 'Missing required fields or CAPTCHA' });
+  }
+
+  // 3. Verify reCAPTCHA token
+  try {
+    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`
+    });
+    const recaptchaData = await recaptchaRes.json();
+    if (!recaptchaData.success) {
+      return res.status(403).json({ error: 'Failed reCAPTCHA verification' });
+    }
+  } catch (err) {
+    return res.status(500).json({ error: 'Error verifying reCAPTCHA' });
+  }
+
+  // 4. Send Email
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
