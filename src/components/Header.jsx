@@ -6,7 +6,7 @@ const Header = () => {
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-professional-200/40 blur-3xl"></div>
-        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-100/50 blur-3xl"></div>
+        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-professional-100/50 blur-3xl"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-8 relative z-10 flex flex-col justify-center">
