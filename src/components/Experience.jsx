@@ -12,16 +12,16 @@ const experiences = [
     date: "Feb 2022 - Current",
     logo: palLogo,
     responsibilities: [
-      "Served as the primary contact between business stakeholders and technical teams to gather, analyze, and document business and systems requirements.",
-      "Analyzed business processes and translated requirements into functional specifications, user stories, process flows and system documentation.",
-      "Managed incident resolution, troubleshooting, and root cause analysis for HR applications related issues, ensuring minimal disruption to business operations.",
-      "Supported project implementation of transitioning from Oracle to SAP SF as the new HRMS of PAL.",
-      "Assisted on the data migration activity for the SAP SF implementation.",
-      "Responsible for the integration of HR Systems to other 3rd party and in-house applications of PAL.",
-      "Collaborated with cross-functional teams to configure, test, and implement system enhancements, upgrades, and new functionalities within HR related applications.",
-      "Provided functional support for SAP SuccessFactors modules, including Employee Central, Recruitment, Onboarding, Performance & Goals and Time Tracking.",
-      "Successfully delivered multiple enhancement projects, improving HR process efficiency and user satisfaction.",
-      "Coordinated User Acceptance Testing, developed test cases, and validated system changes to ensure alignment with business requirements."
+      <>Served as the primary contact between business stakeholders and technical teams to gather, analyze, and document <strong>business and systems requirements</strong>.</>,
+      <>Analyzed business processes and translated requirements into <strong>functional specifications, user stories, process flows and system documentation</strong>.</>,
+      <>Managed <strong>incident resolution, troubleshooting, and root cause analysis</strong> for HR applications related issues, ensuring minimal disruption to business operations.</>,
+      <>Supported project implementation of transitioning from <strong>Oracle</strong> to <strong>SAP SuccessFactors (SAP SF)</strong> as the new HRMS of PAL.</>,
+      <>Assisted on the <strong>data migration</strong> activity for the <strong>SAP SF</strong> implementation.</>,
+      <>Responsible for the <strong>integration of HR Systems</strong> to other 3rd party and in-house applications of PAL.</>,
+      <>Collaborated with cross-functional teams to configure, test, and implement <strong>system enhancements, upgrades, and new functionalities</strong> within HR related applications.</>,
+      <>Provided functional support for <strong>SAP SuccessFactors</strong> modules, including Employee Central, Recruitment, Onboarding, Performance & Goals and Time Tracking.</>,
+      <>Successfully delivered <strong>multiple enhancement projects</strong>, improving HR process efficiency and user satisfaction.</>,
+      <>Coordinated <strong>User Acceptance Testing (UAT)</strong>, developed test cases, and validated system changes to ensure alignment with business requirements.</>
     ]
   },
   {
@@ -31,11 +31,11 @@ const experiences = [
     date: "Oct 2021 - Feb 2022",
     logo: accentureLogo,
     responsibilities: [
-      "Provided functional support to clients for SAP HCM modules, including Personnel Administration, Organizational Management, Time Management, and Payroll.",
-      "Designed, developed, tested, and deployed small- to medium-scale enhancements for SAP HCM applications.",
-      "Managed production support activities, including incident resolution and adherence to established Service Level Agreements.",
-      "Gathered business requirements and prepared functional design specifications for SAP HCM enhancements and change requests.",
-      "Performed integration, system, and regression testing to validate SAP HCM functionality and ensure successful deployment of enhancements."
+      <>Provided functional support to clients for <strong>SAP HCM modules</strong>, including Personnel Administration, Organizational Management, Time Management, and Payroll.</>,
+      <>Designed, developed, tested, and deployed <strong>small- to medium-scale enhancements</strong> for <strong>SAP HCM</strong> applications.</>,
+      <>Managed <strong>production support activities</strong>, including incident resolution and adherence to established <strong>Service Level Agreements (SLAs)</strong>.</>,
+      <>Gathered business requirements and prepared <strong>functional design specifications</strong> for <strong>SAP HCM</strong> enhancements and change requests.</>,
+      <>Performed <strong>integration, system, and regression testing</strong> to validate <strong>SAP HCM</strong> functionality and ensure successful deployment of enhancements.</>
     ]
   },
   {
@@ -45,11 +45,11 @@ const experiences = [
     date: "Oct 2019 - Sep 2021",
     logo: epldtLogo,
     responsibilities: [
-      "Analyzed business functions and processes to identify operational objectives, gather requirements, and define system output needs and reporting formats.",
-      "Provided Level 1 application support for business-critical systems, including SAP B1 and Salesforce, by troubleshooting issues and delivering timely solutions to internal users.",
-      "Served as the SAP B1 Master Data Controller, ensuring data accuracy, consistency, integrity, and compliance with established data governance standards.",
-      "Participated in the planning, coordination, and implementation of key IT initiatives, including SAP B1 implementation, CRM transformation, and document digitization projects.",
-      "Collaborated with business users and third-party vendors during User Acceptance Testing, facilitating test execution, defect resolution, and successful project delivery."
+      <>Analyzed business functions and processes to identify <strong>operational objectives</strong>, gather requirements, and define <strong>system output needs and reporting formats</strong>.</>,
+      <>Provided <strong>Level 1 application support</strong> for business-critical systems, including <strong>SAP B1</strong> and <strong>Salesforce</strong>, by troubleshooting issues and delivering timely solutions to internal users.</>,
+      <>Served as the <strong>SAP B1 Master Data Controller</strong>, ensuring data accuracy, consistency, integrity, and compliance with established <strong>data governance standards</strong>.</>,
+      <>Participated in the planning, coordination, and implementation of key IT initiatives, including <strong>SAP B1 implementation, CRM transformation, and document digitization projects</strong>.</>,
+      <>Collaborated with business users and third-party vendors during <strong>User Acceptance Testing (UAT)</strong>, facilitating test execution, defect resolution, and successful project delivery.</>
     ]
   },
   {
@@ -59,11 +59,11 @@ const experiences = [
     date: "Dec 2017 - Feb 2019",
     logo: ngaLogo,
     responsibilities: [
-      "Analyzed and resolved medium complexity problems related to the functional issues of SAP HR within agreed SLA.",
-      "Provided functional and application support to clients, ensuring the effective operation of SAP HR systems and processes.",
-      "Performed integration and system testing to validate enhancements, configurations, and defect resolutions.",
-      "Managed support activities across multiple client accounts simultaneously while maintaining service quality and meeting delivery timelines.",
-      "Supported the implementation of change requests, including requirements analysis, configuration, testing, deployment, and post-implementation support."
+      <>Analyzed and resolved <strong>medium complexity problems</strong> related to the functional issues of <strong>SAP HR</strong> within agreed <strong>SLA</strong>.</>,
+      <>Provided <strong>functional and application support</strong> to clients, ensuring the effective operation of <strong>SAP HR</strong> systems and processes.</>,
+      <>Performed <strong>integration and system testing</strong> to validate enhancements, configurations, and defect resolutions.</>,
+      <>Managed support activities across <strong>multiple client accounts simultaneously</strong> while maintaining service quality and meeting delivery timelines.</>,
+      <>Supported the implementation of <strong>change requests</strong>, including requirements analysis, configuration, testing, deployment, and <strong>post-implementation support</strong>.</>
     ]
   }
 ];
