@@ -34,18 +34,22 @@ export default async function handler(req, res) {
   }
 
   // 3. Verify reCAPTCHA token
-  try {
-    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`
-    });
-    const recaptchaData = await recaptchaRes.json();
-    if (!recaptchaData.success) {
-      return res.status(403).json({ error: 'Failed reCAPTCHA verification' });
+  const isLocal = !process.env.VERCEL_ENV || process.env.NODE_ENV === 'development' || (req.headers.host && req.headers.host.includes('localhost'));
+  
+  if (!isLocal) {
+    try {
+      const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`
+      });
+      const recaptchaData = await recaptchaRes.json();
+      if (!recaptchaData.success) {
+        return res.status(403).json({ error: 'Failed reCAPTCHA verification' });
+      }
+    } catch (err) {
+      return res.status(500).json({ error: 'Error verifying reCAPTCHA' });
     }
-  } catch (err) {
-    return res.status(500).json({ error: 'Error verifying reCAPTCHA' });
   }
 
   // 4. Send Email

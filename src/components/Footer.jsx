@@ -15,7 +15,9 @@ const Footer = () => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
-    if (!recaptchaToken) {
+    const isLocal = import.meta.env.DEV;
+
+    if (!isLocal && !recaptchaToken) {
       alert("Please complete the CAPTCHA first.");
       return;
     }
@@ -26,7 +28,7 @@ const Footer = () => {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, recaptchaToken })
+        body: JSON.stringify({ ...formData, recaptchaToken: isLocal ? 'local-bypass' : recaptchaToken })
       });
       
       if (response.ok) {
@@ -135,14 +137,22 @@ const Footer = () => {
                   className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-professional-500 transition-colors resize-none"
                 ></textarea>
               </div>
-              <div className="flex justify-center my-4 overflow-hidden rounded-lg">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || ""}
-                  onChange={setRecaptchaToken}
-                  theme="dark"
-                />
-              </div>
+              {!import.meta.env.DEV && (
+                <div className="flex justify-center my-4 overflow-hidden rounded-lg">
+                  {import.meta.env.VITE_RECAPTCHA_SITE_KEY ? (
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                      onChange={setRecaptchaToken}
+                      theme="dark"
+                    />
+                  ) : (
+                    <div className="p-4 bg-red-900/50 border border-red-500 rounded text-red-200 text-sm text-center">
+                      reCAPTCHA Site Key is missing. <br/> Please add VITE_RECAPTCHA_SITE_KEY to your .env file.
+                    </div>
+                  )}
+                </div>
+              )}
               <button 
                 type="submit"
                 disabled={status === 'loading'}
