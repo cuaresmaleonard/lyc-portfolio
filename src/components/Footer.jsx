@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
-      <div className="max-w-5xl mx-auto px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           {/* Contact Info */}
           <div>
@@ -87,7 +87,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Form UI */}
-          <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+          <div className="bg-gray-800 p-5 sm:p-6 rounded-xl border border-gray-700">
             <h4 className="text-lg font-semibold mb-4 text-white">
               Send a Message
             </h4>
