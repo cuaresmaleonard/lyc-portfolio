@@ -9,12 +9,12 @@ export default {
     extend: {
       colors: {
         professional: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          900: '#0c4a6e',
+          50: '#fcfaf8',
+          100: '#f4ece5',
+          500: '#b4846c',
+          600: '#946651',
+          700: '#754f3f',
+          900: '#3e2921',
         }
       },
       fontFamily: {

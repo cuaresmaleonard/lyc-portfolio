@@ -74,7 +74,7 @@ const Experience = () => {
       <div className="max-w-5xl mx-auto px-8">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 relative inline-block">
           Professional Experience
-          <span className="absolute left-0 -bottom-2 w-1/2 h-1 bg-professional-500 rounded-full"></span>
+          <span className="absolute left-0 -bottom-2 w-1/2 h-1 bg-professional-500 rounded-md"></span>
         </h2>
         
         <div className="space-y-8">
@@ -94,7 +94,7 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-white dark:bg-gray-800 px-4 py-1.5 rounded-full border border-gray-200 dark:border-gray-700 text-sm font-semibold text-gray-600 dark:text-gray-300 shadow-sm whitespace-nowrap">
+                <div className="bg-white dark:bg-gray-800 px-4 py-1.5 rounded-md border border-gray-200 dark:border-gray-700 text-sm font-semibold text-gray-600 dark:text-gray-300 shadow-sm whitespace-nowrap">
                   {exp.date}
                 </div>
               </div>
