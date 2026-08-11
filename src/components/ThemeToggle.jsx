@@ -4,13 +4,14 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check initial system preference or localStorage
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Default to light mode for new visitors, only use dark if explicitly saved
+    if (localStorage.theme === 'dark') {
       setIsDark(true);
       document.documentElement.classList.add('dark');
     } else {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light'; // Set it explicitly so we don't accidentally inherit dark mode later
     }
   }, []);
 
