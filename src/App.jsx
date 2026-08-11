@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import CertificationsTools from './components/CertificationsTools';
 import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
+import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <CertificationsTools />
       <Education />
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
