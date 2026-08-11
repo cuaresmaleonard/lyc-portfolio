@@ -79,7 +79,7 @@ const Experience = () => {
         
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="glass-card dark:bg-gray-900 dark:border-gray-700 p-8 transition-colors">
+            <div key={index} className="glass-card dark:bg-gray-900 dark:border-gray-700 p-6 md:p-8 transition-colors">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-6 border-b border-gray-100 dark:border-gray-800 gap-4">
                 <div className="flex items-center gap-5">
                   {exp.logo && (

@@ -9,7 +9,7 @@ const Education = () => {
           <span className="absolute left-0 -bottom-2 w-1/2 h-1 bg-professional-500 rounded-full"></span>
         </h2>
         
-        <div className="glass-card dark:bg-gray-800 p-8 border-l-4 border-l-professional-500 dark:border-l-professional-400 dark:border-gray-700 transition-colors">
+        <div className="glass-card dark:bg-gray-800 p-6 md:p-8 border-l-4 border-l-professional-500 dark:border-l-professional-400 dark:border-gray-700 transition-colors">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-1">

@@ -32,7 +32,7 @@ const Projects = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="glass-card dark:bg-gray-900 dark:border-gray-700 p-6 flex flex-col h-full hover:-translate-y-2">
+            <div key={index} className="glass-card dark:bg-gray-900 dark:border-gray-700 p-5 md:p-6 flex flex-col h-full hover:-translate-y-2">
               <div className="mb-4">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
                 <p className="text-professional-600 dark:text-professional-400 font-medium text-sm">{project.company}</p>
