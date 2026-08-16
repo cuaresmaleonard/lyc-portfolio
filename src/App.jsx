@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
+
 import CertificationsTools from './components/CertificationsTools';
 import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
@@ -15,7 +15,7 @@ function App() {
       <ThemeToggle />
       <Header />
       <Skills />
-      <Projects />
+
       <Experience />
       <CertificationsTools />
       <Education />

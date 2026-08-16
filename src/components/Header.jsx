@@ -11,6 +11,16 @@ const Header = () => {
 
       <div className="max-w-5xl mx-auto px-8 relative z-10 flex flex-col justify-center">
         <div className="text-left animate-fade-in-up">
+          
+          {/* Status pill badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-professional-100/90 dark:bg-teal-950/80 border border-professional-200 dark:border-teal-700/60 text-xs font-semibold text-professional-800 dark:text-teal-300 mb-6 shadow-sm">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for Systems Analyst & Business Process Roles
+          </div>
+
           <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight drop-shadow-sm transition-colors">
             Janel Erguin Cuaresma
           </h1>
